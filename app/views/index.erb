@@ -1,7 +1,14 @@
 <h1>My Skills</h1>
 
 <ol>
-  <%= @skills.each do |skill| %>
-  <li><a href="/skills/<%= skill.id %>"><%= skill.title %></a></li>
-  <%= end %>
+  <% @skills.each do |skill| %>
+  <li><a href="/skills/<%= skill.id %>"><%= skill.name %></a></li>
+  <a href="/skills/<%= skill.id %>/edit">Edit</a>
+
+  <form action="/skills/<%= skill.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Skill">
+  </form>
+
+  <% end %>
 </ol>

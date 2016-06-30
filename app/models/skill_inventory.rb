@@ -34,4 +34,19 @@ class SkillInventory
   def self.find(id)
     Skill.new(raw_skill(id))
   end
+
+  def self.update(id, skill)
+    database.transaction do
+      selected_skill = database['skills'].find {|data| data["id"] == id }
+      selected_skill["name"] = skill[:name]
+      selected_skill["description"] = skill[:description]
+    end
+  end
+
+  def self.destroy(id)
+    database.transaction do
+      database['skills'].delete_if { |skill| skill["id"] == id }
+    end
+  end
+
 end
