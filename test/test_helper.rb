@@ -10,19 +10,9 @@ require 'capybara/dsl'
 require 'launchy'
 
 module TestHelpers
-
   def teardown
     SkillInventory.delete_all
     super
-  end
-
-  def self.database
-    # @database ||= YAML::Store.new('db/skill_inventory_test')
-
-    @database = SQLite3::Database.new('db/skill_inventory_test.db')
-    @database.results_as_hash = true
-
-    # SkillInventory.new(database)
   end
 end
 

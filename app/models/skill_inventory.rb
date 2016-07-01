@@ -1,42 +1,13 @@
 require 'sqlite3'
 
 class SkillInventory
-
-  # def self.$db
-  #   @$db ||= YAML::Store.new("db/skill_inventory")
-  # end
-
-  # def self.$db
-  #   if ENV['RACK_ENV'] == 'test'
-  #     @$db = SQLite3::$db.new("db/skill_inventory_test.db")
-  #   else
-  #     @$db = SQLite3::$db.new("db/skill_inventory_development.db")
-  #   end
-  #   @$db.results_as_hash = true
-  #
-  #   # SkillInventory.new($db)
-  # end
-
-
   def self.create(skill)
     $db.execute("INSERT INTO skills (name, description)
-      VALUES (?, ?);", skill[:name], skill[:description])
-
-    # $db.transaction do
-    #   $db['skills'] ||= []
-    #   $db['total'] ||= 0
-    #   $db['total'] += 1
-    #   $db['skills'] << { "id" => $db['total'], "name" => skill[:name], "description" => skill[:description]}
-    # end
+      VALUES (?, ?)", skill[:name], skill[:description])
   end
 
-
   def self.raw_skills
-    $db.execute("SELECT * FROM skills;")
-
-    # $db.transaction do
-    #   $db['skills'] || []
-    # end
+    $db.execute("SELECT * FROM skills")
   end
 
   def self.all
@@ -53,29 +24,14 @@ class SkillInventory
 
   def self.update(id, skill)
     $db.execute("UPDATE skills SET name= ?,
-      description= ? WHERE id = ?;", skill[:name], skill[:description], id)
-
-    # $db.transaction do
-    #   selected_skill = $db['skills'].find {|data| data["id"] == id }
-    #   selected_skill["name"] = skill[:name]
-    #   selected_skill["description"] = skill[:description]
-    # end
+      description= ? WHERE id = ?", skill[:name], skill[:description], id)
   end
 
   def self.destroy(id)
-    $db.execute("DELETE FROM skills WHERE id = ?;", id)
-
-    # $db.transaction do
-    #   $db['skills'].delete_if { |skill| skill["id"] == id }
-    # end
+    $db.execute("DELETE FROM skills WHERE id = ?", id)
   end
 
   def self.delete_all
     $db.execute("DELETE FROM skills")
-
-    # $db.transaction do
-    #   $db['skills'] = []
-    #   $db['total'] = 0
-    # end
   end
 end

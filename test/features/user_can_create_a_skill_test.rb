@@ -1,7 +1,6 @@
 require_relative '../test_helper'
 
 class UserCanCreateASkillTest < FeatureTest
-
   def test_user_can_create_skill
     #As a user
     # When I visit the dashboard
@@ -21,5 +20,4 @@ class UserCanCreateASkillTest < FeatureTest
     assert page.has_css?("#name")
     assert page.has_content?("Skills")
   end
-  
 end
