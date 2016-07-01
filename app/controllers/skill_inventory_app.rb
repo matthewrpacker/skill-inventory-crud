@@ -1,6 +1,8 @@
-class SkillInventoryApp < Sinatra::Base
-  set :root, File.join(File.dirname(__FILE__), '..')
-  set :method_override, true
+require_relative '../models/skill_inventory'
+
+class SkillInventoryApp
+  # set :root, File.join(File.dirname(__FILE__), '..')
+  # set :method_override, true
 
   get '/' do
     erb :dashboard
@@ -39,6 +41,4 @@ class SkillInventoryApp < Sinatra::Base
     SkillInventory.destroy(id.to_i)
     redirect '/skills'
   end
-
-
 end

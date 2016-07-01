@@ -2,6 +2,7 @@ class Skill
   attr_reader :name,
               :description,
               :id
+
   def initialize(data)
     @id           = data["id"]
     @name         = data["name"]

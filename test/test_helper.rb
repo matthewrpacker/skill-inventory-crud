@@ -1,3 +1,5 @@
+require 'sqlite3'
+
 ENV['RACK_ENV'] ||= 'test'
 
 require File.expand_path('../../config/environment', __FILE__)
@@ -15,7 +17,12 @@ module TestHelpers
   end
 
   def self.database
-    @database ||= YAML::Store.new('db/skill_inventory_test')
+    # @database ||= YAML::Store.new('db/skill_inventory_test')
+
+    @database = SQLite3::Database.new('db/skill_inventory_test.db')
+    @database.results_as_hash = true
+
+    # SkillInventory.new(database)
   end
 end
 
