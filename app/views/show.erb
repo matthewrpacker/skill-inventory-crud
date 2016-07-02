@@ -1,6 +1,9 @@
-<header>
-<a class="back btn btn-info" href="/skills">Skills</a>
-<h2><%= @skill.name %></h2>
-</header>
+<div>
+  <header>
+    <a class="back btn btn-info" href="/skills">Skills</a>
+    <a class="btn btn-info" href="/skills/<%= @skill.id %>/edit">Edit</a>
+    <h2 class="col-md-offset-4"><%= @skill.name %></h2>
+  </header>
+</div>
 
-<p><%= @skill.description %></p>
+<p class="col-md-offset-4"><%= @skill.description %></p>
