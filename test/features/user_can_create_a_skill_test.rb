@@ -5,8 +5,8 @@ class UserCanCreateASkillTest < FeatureTest
     visit '/'
     click_link "New"
     assert_equal "/skills/new", current_path
-    fill_in "skill[name]", with: "New skill"
-    fill_in "skill[description]", with: "New description"
+    fill_in "Name", with: "New skill"
+    fill_in "Description", with: "New description"
     click_button("Save")
     assert_equal "/skills", current_path
     assert page.has_content?("Skills")
