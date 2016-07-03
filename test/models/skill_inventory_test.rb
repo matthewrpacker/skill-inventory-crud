@@ -11,7 +11,6 @@ class SkillInventoryTest < Minitest::Test
     SkillInventory.all.first.id
   end
 
-
   def test_it_creates_a_skill
     skill_inventory_empty
 

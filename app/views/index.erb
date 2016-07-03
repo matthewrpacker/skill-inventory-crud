@@ -1,23 +1,16 @@
-<div id="name">
-  <header>
-    <a class="btn btn-info" href="/skills/new">New Skill</a>
-    <a class="back btn btn-info" href="/">Home</a>
-    <h2 class="col-md-offset-4">Skills</h2>
-  </header>
-</div>
+<header>
+  <a class="btn btn-info" href="/skills/new">New</a>
+  <h2>Skills</h2>
+</header>
 
-<div id="skill_list" class="col-md-offset-3">
-  <ol>
-    <% @skills.each do |skill| %>
-
+<ol>
+  <% @skills.each do |skill| %>
+  <li>
     <form action="/skills/<%= skill.id %>" method="post">
+      <a href="/skills/<%= skill.id %>"><%= skill.name %></a>
       <input type="hidden" name="_method" value="delete">
-      <button class="back btn btn-danger btn-xs" type="submit">Delete</button>
+      <button class="btn btn-danger btn-xs" type="submit">Delete</button>
     </form>
-
-    <li><a href="/skills/<%= skill.id %>"><%= skill.name %></a></li>
-    <a href="/skills/<%= skill.id %>/edit">Edit</a>
-
-    <% end %>
-  </ol>
-</div>
+  </li>
+  <% end %>
+</ol>

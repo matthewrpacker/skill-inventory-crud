@@ -2,7 +2,7 @@ require_relative '../models/skill_inventory'
 
 class SkillInventoryApp
   get '/' do
-    erb :dashboard
+    redirect '/skills'
   end
 
   get '/skills' do
@@ -26,7 +26,7 @@ class SkillInventoryApp
 
   put '/skills/:id' do |id|
     SkillInventory.update(id.to_i, params[:skill])
-    redirect '/skills'
+    redirect "/skills/#{id}"
   end
 
   get '/skills/:id' do |id|

@@ -1,28 +1,29 @@
 .container {
-  max-width: 480px
+  max-width: 480px;
 }
 
 .btn {
-  float: right
+  float: right;
 }
 
 ol {
-  padding-left: 22px
+  padding-left: 22px;
 }
 
 ol > li {
-  font-size: 18px
+  font-size: 18px;
+  margin-top: 10px;
 }
 
 .back {
   margin-right: 40px;
-  float: left
+  float: left;
 }
 
 header {
-  margin-bottom: 16px
+  margin-bottom: 16px;
 }
 
 p {
-  font-size: 18px
+  font-size: 18px;
 }
